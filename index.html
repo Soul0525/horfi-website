@@ -52,10 +52,11 @@
               <li><a href="team-page.html">Our Team</a></li>
               </ul>
           <li><a href="index.html#portfolio">Gallery</a></li>
-          <li class="dropdown"><a href="#"><span>Blog</span> <i class="bi bi-chevron-down toggle-dropdown"></i></a>
+          <li><a href="">Blog</a></li>
+         <!-- <li class="dropdown"><a href="#"><span>Blog</span> <i class="bi bi-chevron-down toggle-dropdown"></i></a>
             <ul> 
               <li><a href="#">Article</a></li>
-            </ul>
+            </ul> -->
           <li><a href="index.html#faq">FAQs</a></li>
         </ul>
         <i class="mobile-nav-toggle d-xl-none bi bi-list"></i>
@@ -340,7 +341,6 @@
             <div class="text-center">
               <h3>Lend a Hand: Be Part of the Giving Adventure</h3>
               <p>Your Contribution Sparks Lasting Impact</p>
-              <a class="cta-btn" href="#">START DONATING NOW</a>
             </div>
           </div>
         </div>
@@ -397,45 +397,72 @@
                 </div>
               </div>
 
-              <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3859.7593485097605!2d121.02707647433226!3d14.66959397538532!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3397b6dec20dfc2d%3A0x3d7aa4ea5f1e8d7b!2sHouse%20of%20Refuge%20Foundation%2C%20Inc.!5e0!3m2!1sen!2sph!4v1740905313282!5m2!1sen!2sph" frameborder="0" style="border:0; width: 100%; height: 270px;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+              <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3859.759440026631!2d121.02707647487411!3d14.66958878582499!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3397b6dec20dfc2d%3A0x3d7aa4ea5f1e8d7b!2sHouse%20of%20Refuge%20Foundation%2C%20Inc.!5e0!3m2!1sen!2sph!4v1769007902309!5m2!1sen!2sph" frameborder="0" style="border:0; width: 100%; height: 270px;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
             </div>
           </div>
 
           <div class="col-lg-7">
-            <form action="forms/contact.php" method="post" class="php-email-form" data-aos="fade-up" data-aos-delay="200">
+            <form class="php-email-form" id="donation-form" data-aos="fade-up" data-aos-delay="200" novalidate>
               <div class="row gy-4">
 
-                <div class="col-md-6">
-                  <label for="name-field" class="pb-2">Your Name</label>
-                  <input type="text" name="name" id="name-field" class="form-control" required="">
+                <!-- Honeypot field - hidden from users, catches spam bots -->
+                <div class="d-none" aria-hidden="true">
+                  <label for="website">Website</label>
+                  <input type="text" name="website" id="website" tabindex="-1" autocomplete="off">
                 </div>
 
                 <div class="col-md-6">
-                  <label for="email-field" class="pb-2">Your Email</label>
-                  <input type="email" class="form-control" name="email" id="email-field" required="">
+                  <label for="name-field" class="pb-2">Full Name <span class="text-danger">*</span></label>
+                  <input type="text" name="name" id="name-field" class="form-control" placeholder="Enter your full name" required>
+                </div>
+
+                <div class="col-md-6">
+                  <label for="email-field" class="pb-2">Email Address <span class="text-danger">*</span></label>
+                  <input type="email" class="form-control" name="email" id="email-field" placeholder="Enter your email" required>
+                </div>
+
+                <div class="col-md-6">
+                  <label for="phone-field" class="pb-2">Phone Number</label>
+                  <input type="tel" class="form-control" name="phoneNumber" id="phone-field" placeholder="Enter your phone number">
+                </div>
+
+                <div class="col-md-6">
+                  <label for="donation-type-field" class="pb-2">Donation Type <span class="text-danger">*</span></label>
+                  <select class="form-select" name="donationType" id="donation-type-field" required>
+                    <option value="" disabled selected>Select donation type</option>
+                    <option value="one-time">One-Time Donation</option>
+                    <option value="monthly">Monthly Donation</option>
+                    <option value="annual">Annual Donation</option>
+                    <option value="in-kind">In-Kind Donation</option>
+                    <option value="sponsorship">Child Sponsorship</option>
+                  </select>
                 </div>
 
                 <div class="col-md-12">
-                  <label for="subject-field" class="pb-2">Subject</label>
-                  <input type="text" class="form-control" name="subject" id="subject-field" required="">
+                  <label for="amount-field" class="pb-2">Donation Amount (PHP)</label>
+                  <div class="input-group">
+                    <span class="input-group-text">₱</span>
+                    <input type="number" class="form-control" name="amount" id="amount-field" placeholder="Enter amount" min="0" step="0.01">
+                  </div>
+                  <div class="form-text">Leave blank for in-kind donations</div>
                 </div>
 
                 <div class="col-md-12">
-                  <label for="message-field" class="pb-2">Message</label>
-                  <textarea class="form-control" name="message" rows="10" id="message-field" required=""></textarea>
+                  <label for="message-field" class="pb-2">Message / Special Instructions</label>
+                  <textarea class="form-control" name="message" rows="5" id="message-field" placeholder="Any message or special instructions for your donation..."></textarea>
                 </div>
 
                 <div class="col-md-12 text-center">
-                  <div class="loading">Loading</div>
+                  <div class="loading">Processing your donation...</div>
                   <div class="error-message"></div>
-                  <div class="sent-message">Your message has been sent. Thank you!</div>
+                  <div class="sent-message">Thank you for your generous donation! We will contact you shortly.</div>
 
-                  <button type="submit">Send Message</button>
+                  <button type="submit" class="btn btn-lg">Submit Donation</button>
                 </div>
 
               </div>
             </form>
-          </div><!-- End Contact Form -->
+          </div><!-- End Donation Form -->
 
         </div>
 
@@ -515,7 +542,6 @@
 
   <!-- Vendor JS Files -->
   <script src="vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
-  <script src="vendor/php-email-form/validate.js"></script>
   <script src="vendor/aos/aos.js"></script>
   <script src="vendor/glightbox/js/glightbox.min.js"></script>
   <script src="vendor/purecounter/purecounter_vanilla.js"></script>
@@ -525,6 +551,9 @@
 
   <!-- Main JS File -->
   <script src="js/main.js"></script>
+
+  <!-- Donation Form Handler -->
+  <script src="js/donation.js"></script>
 
 </body>
 
