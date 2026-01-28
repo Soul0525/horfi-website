@@ -124,7 +124,7 @@ img {
   padding: 8px 26px;
   margin: 0;
   border-radius: 4px;
-  transition: 0.3s;
+  transition: 0.5s;
 }
 
 .header .btn-getstarted:hover,
@@ -460,6 +460,7 @@ img {
 
 .footer h4 {
   font-size: 16px;
+  color:#9B0A0A;
   font-weight: bold;
   position: relative;
   padding-bottom: 12px;
@@ -815,7 +816,7 @@ section,
   font-size: 15px;
   padding: 8px 30px 10px 30px;
   border-radius: 7px;
-  transition: 0.4s;
+  transition: 0.5s;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -829,7 +830,7 @@ section,
   font-size: 18px;
   padding: 8px 30px 10px 30px;
   border-radius: 7px;
-  transition: 0.4s;
+  transition: 0.5s;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -1094,7 +1095,7 @@ section,
   font-size: 18px;
   padding: 0x 100px 1px 1px;
   border-radius:7px;
-  transition: 0.4s;
+  transition: 0.7s;
   display: flex;
   align-items: left;
   justify-content: center;
@@ -2476,9 +2477,9 @@ section,
 
 .about .subtitle {
   display: inline-block;
-  color: var(--accent-color);
+  color: #9B0A0A;
   font-weight: 600;
-  font-size: 1rem;
+  font-size: 25px;
   margin-bottom: 0.75rem;
   position: relative;
   letter-spacing: 0.5px;
